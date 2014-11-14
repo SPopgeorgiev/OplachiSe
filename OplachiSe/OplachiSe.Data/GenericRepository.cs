@@ -7,10 +7,10 @@
 
     public class GenericRepository<T> : IRepository<T> where T : class
     {
-        private OplachiSeDbContext context;
+        private IOplachiSeDbContext context;
         private IDbSet<T> set;
 
-        public GenericRepository(OplachiSeDbContext ctx)
+        public GenericRepository(IOplachiSeDbContext ctx)
         {
             this.context = ctx;
             this.set = ctx.Set<T>();
