@@ -1,16 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace OplachiSe.Web.Controllers
+﻿namespace OplachiSe.Web.Controllers
 {
-    public class HomeController : Controller
+    using System.Web.Mvc;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
+
+    using OplachiSe.Data.Contracts;
+    using OplachiSe.Web.Models;
+
+    public class HomeController : BaseController
     {
+        public HomeController(IOplachiSeData data)
+            : base(data)
+        {
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var complains = this.Data
+                .Complains
+                .All()
+                .Project()
+                .To<ComplainViewModel>()
+                .ToList();
+
+            return View(complains);
         }
 
         public ActionResult About()

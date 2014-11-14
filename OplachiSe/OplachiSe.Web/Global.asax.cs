@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OplachiSe.Web.Infrastructure.Mapping;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,7 @@ namespace OplachiSe.Web
     {
         protected void Application_Start()
         {
+            AutoMapperConfig.Execute();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
