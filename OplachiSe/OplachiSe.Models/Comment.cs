@@ -1,5 +1,6 @@
 ﻿namespace OplachiSe.Models
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
@@ -28,6 +29,8 @@
             get { return this.likes; }
             set { this.likes = value; }
         }
+
+        public DateTime CreatedOn { get; set; }
 
         [Required]
         [MinLength(5)]

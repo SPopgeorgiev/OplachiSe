@@ -1,5 +1,6 @@
 ﻿namespace OplachiSe.Models
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
@@ -50,5 +51,7 @@
             get { return this.votes; }
             set { this.votes = value; }
         }
+
+        public DateTime CreatedOn { get; set; }
     }
 }
