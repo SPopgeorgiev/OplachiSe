@@ -165,7 +165,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -236,6 +235,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OplachiSe.Data\OplachiSe.Data.csproj">
+      <Project>{f5577eab-76a6-48bc-8ab2-f27f1615fcea}</Project>
+      <Name>OplachiSe.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OplachiSe.Models\OplachiSe.Models.csproj">
+      <Project>{f5f7ee92-69f4-4142-ad2a-8f30cb3e56cd}</Project>
+      <Name>OplachiSe.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
