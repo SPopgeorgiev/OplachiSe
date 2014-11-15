@@ -9,6 +9,7 @@
 
     using OplachiSe.Data.Contracts;
     using OplachiSe.Web.Models;
+    using OplachiSe.Web.Models.ComplainModels;
 
     public class HomeController : BaseController
     {
@@ -22,11 +23,27 @@
             var complains = this.Data
                 .Complains
                 .All()
+                .Take(3)
                 .Project()
                 .To<ComplainViewModel>()
                 .ToList();
-
+                
             return View(complains);
+        }
+
+        [ChildActionOnly]
+        public ActionResult GetLatestComplains()
+        {
+            var latestComplains = this.Data
+                .Complains
+                .All()
+                .OrderByDescending(c => c.CreatedOn)
+                .Take(10)
+                .Project()
+                .To<LatestComplainViewModel>()
+                .ToList();
+
+            return PartialView("_LatestComplainsPartial", latestComplains);
         }
 
         public ActionResult About()

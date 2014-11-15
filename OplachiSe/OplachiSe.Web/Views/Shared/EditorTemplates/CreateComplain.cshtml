@@ -1,0 +1,31 @@
+﻿@model OplachiSe.Web.Models.ComplainModels.CreateComplainViewModel
+@{
+    ViewBag.Title = "Добави оплакване";
+}
+
+@using (Html.BeginForm("Create", "Complain", FormMethod.Post, new { @class = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.EditorFor(m => m.Title)
+    @Html.EditorFor(m => m.Content)
+    <div class="row">
+        <div class="col-md-2">
+            <strong>Image</strong>
+        </div>
+        <div class="col-md-5">
+            <input type="file" name="UploadedImage" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-5 col-md-offset-2">
+            <input type="submit" class="btn btn-success" />
+        </div>
+    </div>
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

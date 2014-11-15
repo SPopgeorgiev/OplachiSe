@@ -11,8 +11,5 @@
 
         public string Extension { get; set; }
 
-        public int ComplainId { get; set; }
-
-        public virtual Complain Complain { get; set; }
     }
 }

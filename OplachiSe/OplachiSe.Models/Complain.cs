@@ -8,13 +8,11 @@
     {
         private ICollection<Comment> comments;
         private ICollection<Vote> votes;
-        private ICollection<Picture> pictures;
 
         public Complain()
         {
             this.comments = new HashSet<Comment>();
             this.votes = new HashSet<Vote>();
-            this.pictures = new HashSet<Picture>();
         }
 
         [Key]
@@ -34,11 +32,9 @@
 
         public virtual User Author { get; set; }
 
-        public virtual ICollection<Picture> Pictures
-        {
-            get { return this.pictures; }
-            set { this.pictures = value; }
-        }
+        public int? PictureId { get; set; }
+
+        public virtual Picture Picture { get; set; }
 
         public virtual ICollection<Comment> Comments
         {

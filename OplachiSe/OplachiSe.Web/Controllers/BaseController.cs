@@ -1,6 +1,9 @@
 ﻿namespace OplachiSe.Web.Controllers
 {
+    using System;
+    using System.Web.Routing;
     using System.Web.Mvc;
+    using System.Linq;
 
     using OplachiSe.Data.Contracts;
     using OplachiSe.Models;
@@ -14,6 +17,6 @@
         
         protected IOplachiSeData Data { get; set; }
 
-        protected User CurrentUser{ get; set; }
+        protected User UserProfile { get; set; }
     }
 }

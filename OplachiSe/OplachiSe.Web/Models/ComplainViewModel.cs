@@ -20,5 +20,7 @@
 
         public string Content { get; set; }
 
+        public int? PictureId { get; set; }
+
     }
 }

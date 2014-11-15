@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Data.Entity;
     using OplachiSe.Data.Contracts;
+    using System.Data.Entity.Infrastructure;
 
     public class GenericRepository<T> : IRepository<T> where T : class
     {
@@ -23,7 +24,15 @@
 
         public void Add(T entity)
         {
-            this.ChangeState(entity, EntityState.Added);
+            DbEntityEntry entry = this.context.Entry(entity);
+            if (entry.State != EntityState.Detached)
+            {
+                entry.State = EntityState.Added;
+            }
+            else
+            {
+                this.set.Add(entity);
+            }
         }
 
         public T Find(object id)
