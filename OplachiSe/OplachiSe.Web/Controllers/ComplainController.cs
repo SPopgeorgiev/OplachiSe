@@ -4,6 +4,7 @@
     using System.Linq;
     
     using AutoMapper;
+    using AutoMapper.QueryableExtensions;
 
     using OplachiSe.Data.Contracts;
     using OplachiSe.Web.Models.ComplainModels;
@@ -67,6 +68,24 @@
             }
 
             return File(image.Content, "image/" + image.Extension);
+        }
+
+        public ActionResult Details(int? id)
+        {
+            var complain = this.Data
+                .Complains
+                .All()
+                .Where(c => c.Id == id).Project()
+                .To<ComplainDetailsViewModel>()
+                .FirstOrDefault();
+                
+
+            if (complain == null)
+            {
+                throw new HttpException(404, "Complain not found");
+            }
+
+            return View(complain);
         }
     }
 }

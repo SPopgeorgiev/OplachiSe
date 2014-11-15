@@ -1,6 +1,7 @@
 ﻿namespace OplachiSe.Models
 {
     using System;
+    using System.Linq;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
@@ -49,5 +50,17 @@
         }
 
         public DateTime CreatedOn { get; set; }
+
+
+        public double CalculateVoteScore()
+        {
+            if (this.Votes.Count != 0)
+            {
+                double sum = this.Votes.Sum(s => s.Value);
+                return sum / votes.Count();
+            }
+
+            return 0;
+        }
     }
 }

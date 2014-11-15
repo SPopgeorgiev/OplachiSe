@@ -8,18 +8,22 @@
 
     public class CreateComplainViewModel : IMapFrom<Complain>
     {
-
-        [Required]
-        [MinLength(3)]
-        [MaxLength(40)]
+        public CreateComplainViewModel()
+        {
+            
+        }
+        
+        [Required(ErrorMessage = "Полето е задължително")]
+        [MinLength(3, ErrorMessage = "Полето трябва да е между 3 и 40 символа")]
+        [MaxLength(40, ErrorMessage = "Полето трябва да е между 3 и 40 символа")]
         [UIHint("SingleLineText")]
         [Display(Name ="Заглавие")]
         
         public string Title { get; set; }
 
-        [Required]
-        [MinLength(20)]
-        [MaxLength(300)]
+        [Required(ErrorMessage = "Полето е задължително")]
+        [MinLength(20, ErrorMessage = "Полето трябва да е между 2 и 300 символа")]
+        [MaxLength(300, ErrorMessage = "Полето трябва да е между 2 и 300 символа")]
         [Display(Name ="Съдържание")]
         [UIHint("MultiLineText")]
         public string Content { get; set; }
