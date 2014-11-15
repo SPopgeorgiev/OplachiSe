@@ -18,5 +18,12 @@
         protected IOplachiSeData Data { get; set; }
 
         protected User UserProfile { get; set; }
+
+        protected override IAsyncResult BeginExecute(RequestContext requestContext, AsyncCallback callback, object state)
+        {
+            this.UserProfile = this.Data.Users.All().Where(u => u.UserName == requestContext.HttpContext.User.Identity.Name).FirstOrDefault();
+
+            return base.BeginExecute(requestContext, callback, state);
+        }
     }
 }

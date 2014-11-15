@@ -187,6 +187,7 @@
     <Compile Include="Controllers\ComplainController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\VoteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -199,6 +200,7 @@
     <Compile Include="Models\ComplainViewModel.cs" />
     <Compile Include="Models\ComplainModels\CreateComplainViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\VoteModels\NewVoteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -437,6 +439,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -495,6 +499,11 @@
     <Content Include="Views\Shared\DisplayTemplates\ListLatestComplains.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\ComplainDetails.cshtml" />
     <Content Include="Views\Complain\Details.cshtml" />
+    <Content Include="Views\Vote\_ChangeVotePartial.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AddVote.cshtml" />
+    <Content Include="Views\Vote\_AddVotePartial.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\VoteResult.cshtml" />
+    <Content Include="Views\Complain\_DisplayVotePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

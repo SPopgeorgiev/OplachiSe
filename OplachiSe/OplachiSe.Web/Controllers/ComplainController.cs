@@ -34,8 +34,7 @@
             if (complain != null && ModelState.IsValid)
             {
                 var newComplain = Mapper.Map<Complain>(complain);
-                var user = this.Data.Users.All().Where(u => u.UserName == this.User.Identity.Name).FirstOrDefault();
-                newComplain.AuthorId = user.Id;
+                newComplain.AuthorId = this.UserProfile.Id;
                 newComplain.CreatedOn = DateTime.Now;
                 if (complain.UploadedImage != null)
                 {
@@ -59,7 +58,7 @@
             return View(complain);
         }
 
-        public ActionResult Image(int id)
+        public ActionResult Picture(int id)
         {
             var image = this.Data.Pictures.Find(id);
             if (image == null)
@@ -72,10 +71,13 @@
 
         public ActionResult Details(int? id)
         {
-            var complain = this.Data
+            var dbComplain = this.Data
                 .Complains
                 .All()
-                .Where(c => c.Id == id).Project()
+                .Where(c => c.Id == id);
+
+            var complain = dbComplain
+                .Project()
                 .To<ComplainDetailsViewModel>()
                 .FirstOrDefault();
                 
@@ -85,6 +87,12 @@
                 throw new HttpException(404, "Complain not found");
             }
 
+            complain.Score = 0;
+            if (dbComplain.FirstOrDefault().Votes.Count() != 0)
+            {
+                var sum = dbComplain.FirstOrDefault().Votes.Sum(v => v.Value);
+                complain.Score = sum / dbComplain.FirstOrDefault().Votes.Count();
+            }
             return View(complain);
         }
     }

@@ -12,7 +12,7 @@
                 <div>
                     @if (item.PictureId != null)
                     {
-                        <img class="img-thumbnail pic-preview" src="@Url.Action("Image", "Complain", new { id = item.PictureId })" alt="@item.Title" />
+                        <img class="img-thumbnail pic-preview" src="@Url.Action("Picture", "Complain", new { id = item.PictureId })" alt="@item.Title" />
                     }
                     else
                     {

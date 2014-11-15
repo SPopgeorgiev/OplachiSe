@@ -23,12 +23,13 @@
 
         public int? PictureId { get; set; }
 
+        public double Score { get; set; }
+
 
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Complain, ComplainDetailsViewModel>()
                 .ForMember(c => c.AuthorName, opt => opt.MapFrom(c => c.Author.UserName));
-
         }
     }
 }
