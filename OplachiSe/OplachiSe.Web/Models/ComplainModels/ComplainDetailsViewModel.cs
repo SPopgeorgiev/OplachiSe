@@ -9,6 +9,8 @@
 
     using OplachiSe.Models;
     using OplachiSe.Web.Infrastructure.Mapping;
+    using OplachiSe.Web.Models.CommentModels;
+
     public class ComplainDetailsViewModel : IMapFrom<Complain>, IHaveCustomMappings
     {
         public int Id { get; set; }

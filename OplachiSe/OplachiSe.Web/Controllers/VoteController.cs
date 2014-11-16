@@ -42,6 +42,7 @@
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SendVote(NewVoteViewModel vote)
+
         {
             var dbVote = Mapper.Map<Vote>(vote);
             dbVote.Voter = this.UserProfile;

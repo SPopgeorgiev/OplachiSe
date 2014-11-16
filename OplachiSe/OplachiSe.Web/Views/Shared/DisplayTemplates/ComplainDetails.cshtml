@@ -1,5 +1,5 @@
-﻿@model OplachiSe.Web.Models.ComplainModels.ComplainDetailsViewModel
-
+﻿@using OplachiSe.Web.Models.CommentModels
+@model OplachiSe.Web.Models.ComplainModels.ComplainDetailsViewModel
 <div>
     <h3>Снимка</h3>
     @if (Model.PictureId != null)
@@ -14,7 +14,7 @@
 
 <h1>@Model.Title</h1>
 
-<strong>Рейтинг : @Model.Score</strong>
+<strong>Рейтинг : @String.Format("{0:0.00}", Model.Score)</strong>
 @if (Request.IsAuthenticated)
 {
     <div id="votes">       
@@ -42,8 +42,17 @@
         Дата: @Model.CreatedOn
     </span>
 </div>
-
-@section scripts {
-    @Scripts.Render("~/bundles/jqueryajax")
-    @Scripts.Render("~/bundles/jqueryval")
+@if (Request.IsAuthenticated)
+{
+    <div class="row">
+        <div id="AddComent">
+            @Html.Partial("_AddCommentPartial", new AddCommentViewModel() { ComplainId = Model.Id })
+        </div>
+    </div>
 }
+
+<div id="comments-page">
+
+    @Html.Action("ComplainComments", "Comment", new { id = Model.Id})
+</div>
+

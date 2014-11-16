@@ -23,9 +23,10 @@
             var complains = this.Data
                 .Complains
                 .All()
-                .Take(3)
+                .OrderByDescending(c => (c.Votes.Count + c.Comments.Count))
                 .Project()
                 .To<ComplainViewModel>()
+                .Take(3)
                 .ToList();
                 
             return View(complains);

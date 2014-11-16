@@ -86,12 +86,11 @@
             {
                 throw new HttpException(404, "Complain not found");
             }
-
             complain.Score = 0;
             if (dbComplain.FirstOrDefault().Votes.Count() != 0)
             {
-                var sum = dbComplain.FirstOrDefault().Votes.Sum(v => v.Value);
-                complain.Score = sum / dbComplain.FirstOrDefault().Votes.Count();
+                double sum = dbComplain.FirstOrDefault().Votes.Sum(v => v.Value);
+                complain.Score = (sum / dbComplain.FirstOrDefault().Votes.Count());
             }
             return View(complain);
         }

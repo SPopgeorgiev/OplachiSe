@@ -58,6 +58,12 @@
     <Reference Include="Ninject.Web.Mvc">
       <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -181,9 +187,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Administration\Controllers\CommentController.cs" />
     <Compile Include="Areas\Administration\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Administration\Controllers\KendoGridAdministrationController.cs" />
+    <Compile Include="Areas\Administration\Models\CommentViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ComplainController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -192,9 +203,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="App_Start\AutoMapperConfig.cs" />
+    <Compile Include="Infrastructure\HtmlHelpers\KendoHelpers.cs" />
     <Compile Include="Infrastructure\Mapping\IHaveCustomMapping.cs" />
     <Compile Include="Infrastructure\Mapping\IMapFrom.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CommentModels\AddCommentViewModel.cs" />
+    <Compile Include="Models\CommentModels\ShowCommentViewModel.cs" />
     <Compile Include="Models\ComplainModels\ComplainDetailsViewModel.cs" />
     <Compile Include="Models\ComplainModels\LatestComplainViewModel.cs" />
     <Compile Include="Models\ComplainViewModel.cs" />
@@ -422,6 +436,7 @@
     <Content Include="Content\kendo\Uniform\slider-v.gif" />
     <Content Include="Content\kendo\Uniform\sprite.png" />
     <Content Include="Content\kendo\Uniform\sprite_2x.png" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -431,10 +446,13 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\kendo\images\kendoui.ttf" />
     <Content Include="Content\kendo\images\kendoui.woff" />
-    <Content Include="Areas\Administration\Views\web.config" />
+    <Content Include="Areas\Administration\Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Administration\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Comment\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -504,10 +522,13 @@
     <Content Include="Views\Vote\_AddVotePartial.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\VoteResult.cshtml" />
     <Content Include="Views\Complain\_DisplayVotePartial.cshtml" />
+    <Content Include="Views\Complain\_AddCommentPartial.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CommentText.cshtml" />
+    <Content Include="Views\Comment\_DisplayCommentPartial.cshtml" />
+    <Content Include="Views\Comment\_CommentPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\News\" />
   </ItemGroup>
@@ -519,6 +540,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OplachiSe.Commons\OplachiSe.Commons.csproj">
+      <Project>{0f76c9e6-5619-4896-8640-7099e1ccbb59}</Project>
+      <Name>OplachiSe.Commons</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OplachiSe.Data\OplachiSe.Data.csproj">
       <Project>{f5577eab-76a6-48bc-8ab2-f27f1615fcea}</Project>
       <Name>OplachiSe.Data</Name>
