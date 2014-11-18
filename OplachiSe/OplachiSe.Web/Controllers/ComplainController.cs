@@ -23,7 +23,12 @@
         [Authorize]
         public ActionResult Create()
         {
-            return View();
+            var complainViewModel = new CreateComplainViewModel
+            {
+                Categories = new SelectList(this.Data.Categories.All().ToList(), "Id", "Name")
+            };
+
+            return View(complainViewModel);
         }
 
         [Authorize]

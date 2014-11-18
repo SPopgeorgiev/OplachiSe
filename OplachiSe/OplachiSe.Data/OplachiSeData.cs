@@ -5,6 +5,7 @@
 
     using OplachiSe.Data.Contracts;
     using OplachiSe.Models;
+    using System.Data.Entity;
 
     public class OplachiSeData : IOplachiSeData
     {
@@ -17,9 +18,22 @@
             this.context = ctx;
         }
 
+        public IOplachiSeDbContext Context
+        {
+            get
+            {
+                return this.context;
+            }
+        }
+
         public IRepository<User> Users
         {
             get { return this.GetRepository<User>(); }
+        }
+
+        public IRepository<Category> Categories
+        {
+            get { return this.GetRepository<Category>(); }
         }
 
         public IRepository<Picture> Pictures

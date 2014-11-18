@@ -15,6 +15,8 @@
 
         public IDbSet<Comment> Comments { get; set; }
 
+        public IDbSet<Category> Categories { get; set; }
+
         public IDbSet<Complain> Complains { get; set; }
 
         public IDbSet<Like> Likes { get; set; }

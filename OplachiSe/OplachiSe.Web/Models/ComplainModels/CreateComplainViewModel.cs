@@ -2,6 +2,8 @@
 {
     using System.ComponentModel.DataAnnotations;
     using System.Web;
+    using System.Collections.Generic;
+    using System.Web.Mvc;
 
     using OplachiSe.Models;
     using OplachiSe.Web.Infrastructure.Mapping;
@@ -10,7 +12,6 @@
     {
         public CreateComplainViewModel()
         {
-            
         }
         
         [Required(ErrorMessage = "Полето е задължително")]
@@ -27,6 +28,12 @@
         [Display(Name ="Съдържание")]
         [UIHint("MultiLineText")]
         public string Content { get; set; }
+
+        [Display(Name = "Категория")]
+        [UIHint("DropDownList")]
+        public int CategoryId { get; set; }
+
+        public IEnumerable<SelectListItem> Categories { get; set; }
 
         public HttpPostedFileBase UploadedImage { get; set; }
             

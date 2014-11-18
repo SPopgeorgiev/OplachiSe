@@ -59,3 +59,7 @@ textarea {
 hr{
     margin-top: 3px;
 }
+
+.inline{
+    display : inline-block;
+}

@@ -13,6 +13,7 @@
                         <legend>Ново оплакване</legend>
                         @Html.AntiForgeryToken()
                         @Html.EditorFor(m => m.Title)
+                        @Html.DropDownListFor(m => m.CategoryId, Model.Categories, "Choose... ")
                         @Html.EditorFor(m => m.Content)
                         <div class="row">
                             <div class="col-md-2">

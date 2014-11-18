@@ -188,16 +188,23 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Administration\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Administration\Controllers\CommentController.cs" />
-    <Compile Include="Areas\Administration\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Administration\Controllers\ComplainController.cs" />
     <Compile Include="Areas\Administration\Controllers\KendoGridAdministrationController.cs" />
+    <Compile Include="Areas\Administration\Controllers\LikeController.cs" />
+    <Compile Include="Areas\Administration\Models\CategoryViewModel.cs" />
     <Compile Include="Areas\Administration\Models\CommentViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\ComplainViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\LikeViewModel.cs" />
+    <Compile Include="Areas\Administration\Models\UserViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ComplainController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\VoteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -210,6 +217,9 @@
     <Compile Include="Models\CommentModels\AddCommentViewModel.cs" />
     <Compile Include="Models\CommentModels\ShowCommentViewModel.cs" />
     <Compile Include="Models\ComplainModels\ComplainDetailsViewModel.cs" />
+    <Compile Include="Models\ComplainModels\ComplainFindViewModel.cs" />
+    <Compile Include="Models\ComplainModels\ComplainPagerViewModel.cs" />
+    <Compile Include="Models\ComplainModels\ComplainSearchViewModel.cs" />
     <Compile Include="Models\ComplainModels\LatestComplainViewModel.cs" />
     <Compile Include="Models\ComplainViewModel.cs" />
     <Compile Include="Models\ComplainModels\CreateComplainViewModel.cs" />
@@ -451,8 +461,10 @@
     </Content>
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Administration\Views\Home\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Comment\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Like\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Complain\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Category\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -525,10 +537,14 @@
     <Content Include="Views\Complain\_AddCommentPartial.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CommentText.cshtml" />
     <Content Include="Views\Comment\_DisplayCommentPartial.cshtml" />
-    <Content Include="Views\Comment\_CommentPartial.cshtml" />
+    <Content Include="Views\Search\Display.cshtml" />
+    <Content Include="Views\Search\_ComplainPartial.cshtml" />
+    <Content Include="Views\Search\Find.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Administration\Views\Home\" />
+    <Folder Include="Areas\Administration\Views\User\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\News\" />
   </ItemGroup>

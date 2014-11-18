@@ -1,5 +1,8 @@
 namespace OplachiSe.Data.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using OplachiSe.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -15,18 +18,38 @@ namespace OplachiSe.Data.Migrations
 
         protected override void Seed(OplachiSe.Data.OplachiSeDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            if (context.Roles.Any())
+            {
+               return; 
+            }
+            var roleStore = new RoleStore<IdentityRole>(context);
+            var roleManager = new RoleManager<IdentityRole>(roleStore);
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            var adminRole = new IdentityRole { Name = "Admin" };
+            roleManager.Create(adminRole);
+
+            context.SaveChanges();
+
+            var userManager = new UserManager<User>(new UserStore<User>(context));
+            var admin = new User()
+            {
+                UserName = "admin@abv.com",
+            };
+
+            userManager.Create(admin, "admin@gmail.com");
+            userManager.AddToRole(admin.Id, "Admin");
+
+            context.SaveChanges();
+            if (context.Categories.Any())
+            {
+                return;
+            }
+
+            context.Categories.Add(new Category() { Name = "Лични"});
+            context.Categories.Add(new Category() { Name = "Здраве" });
+            context.Categories.Add(new Category() { Name = "Работа" });
+            context.Categories.Add(new Category() { Name = "Услуги" });
+            context.Categories.Add(new Category() { Name = "Транспорт" });
         }
     }
 }
