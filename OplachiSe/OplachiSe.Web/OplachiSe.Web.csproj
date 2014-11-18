@@ -520,7 +520,6 @@
     <Content Include="Scripts\kendo\jquery.min.map" />
     <Content Include="Scripts\kendo\kendo.all.min.js.map" />
     <Content Include="Scripts\kendo\kendo.aspnetmvc.min.js.map" />
-    <Content Include="Views\Shared\DisplayTemplates\ListComplain.cshtml" />
     <Content Include="Views\Complain\Create.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CreateComplain.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\SingleLineText.cshtml" />
@@ -540,6 +539,7 @@
     <Content Include="Views\Search\Display.cshtml" />
     <Content Include="Views\Search\_ComplainPartial.cshtml" />
     <Content Include="Views\Search\Find.cshtml" />
+    <Content Include="Views\Home\_MostPopularComplainsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

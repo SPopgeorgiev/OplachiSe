@@ -20,16 +20,7 @@
 
         public ActionResult Index()
         {
-            var complains = this.Data
-                .Complains
-                .All()
-                .OrderByDescending(c => (c.Votes.Count + c.Comments.Count))
-                .Project()
-                .To<ComplainViewModel>()
-                .Take(3)
-                .ToList();
-                
-            return View(complains);
+            return View();
         }
 
         [ChildActionOnly]
@@ -45,6 +36,22 @@
                 .ToList();
 
             return PartialView("_LatestComplainsPartial", latestComplains);
+        }
+
+        [ChildActionOnly]
+        [OutputCache(Duration = 10 * 60)]
+        public ActionResult GetPopularComplains()
+        {
+            var complains = this.Data
+                .Complains
+                .All()
+                .OrderByDescending(c => (c.Votes.Count + c.Comments.Count))
+                .Project()
+                .To<ComplainViewModel>()
+                .Take(3)
+                .ToList();
+
+            return PartialView("_MostPopularComplainsPartial", complains);
         }
 
         public ActionResult About()

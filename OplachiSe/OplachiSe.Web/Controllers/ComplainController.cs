@@ -34,6 +34,7 @@
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Create(CreateComplainViewModel complain)
         {
             if (complain != null && ModelState.IsValid)
@@ -63,6 +64,7 @@
             return View(complain);
         }
 
+        [OutputCache(Duration = 30 * 60)]
         public ActionResult Picture(int id)
         {
             var image = this.Data.Pictures.Find(id);

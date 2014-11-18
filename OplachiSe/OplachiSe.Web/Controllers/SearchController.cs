@@ -46,6 +46,7 @@
             return View(findView);
         }
 
+        [OutputCache(Duration = 5 * 60)]
         public ActionResult Display(int page = 1 )
         {
             var allComplains = this.Data

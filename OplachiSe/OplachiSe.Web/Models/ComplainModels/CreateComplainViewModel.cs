@@ -7,24 +7,25 @@
 
     using OplachiSe.Models;
     using OplachiSe.Web.Infrastructure.Mapping;
+    using OplachiSe.Commons;
 
     public class CreateComplainViewModel : IMapFrom<Complain>
     {
         public CreateComplainViewModel()
         {
         }
-        
-        [Required(ErrorMessage = "Полето е задължително")]
-        [MinLength(3, ErrorMessage = "Полето трябва да е между 3 и 40 символа")]
-        [MaxLength(40, ErrorMessage = "Полето трябва да е между 3 и 40 символа")]
+
+        [Required(ErrorMessage = GlobalConstants.RequiredErrorMessage)]
+        [MinLength(5, ErrorMessage = GlobalConstants.MinLength)]
+        [MaxLength(40, ErrorMessage = "Полето трябва да е под 40 символа")]
         [UIHint("SingleLineText")]
         [Display(Name ="Заглавие")]
         
         public string Title { get; set; }
 
-        [Required(ErrorMessage = "Полето е задължително")]
-        [MinLength(20, ErrorMessage = "Полето трябва да е между 2 и 300 символа")]
-        [MaxLength(300, ErrorMessage = "Полето трябва да е между 2 и 300 символа")]
+        [Required(ErrorMessage = GlobalConstants.RequiredErrorMessage)]
+        [MinLength(20, ErrorMessage = GlobalConstants.MinLength20)]
+        [MaxLength(300, ErrorMessage = "Полето трябва да е под 300 символа")]
         [Display(Name ="Съдържание")]
         [UIHint("MultiLineText")]
         public string Content { get; set; }

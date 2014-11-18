@@ -22,6 +22,7 @@
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult AddComment(AddCommentViewModel comment)
         {
             if (comment != null && ModelState.IsValid)
